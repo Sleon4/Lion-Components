@@ -5,8 +5,16 @@ class Components {
 	/* Lions Components 2.0 */
 	public function __construct() {}
 
-	public function getHtml() {
-		return "<html></html>";
+	public function getDoctype() {
+		return "<!DOCTYPE html>";
+	}
+
+	public function getHead($head_content = false, $head_atributes = false, $head_class = false) {
+		return "<head" . (!$head_atributes ? '' : " " . $head_atributes) . (!$head_class ? '' : " class='" . ($head_class) . "'") . ">" . (!$head_content ? '' : $head_content) . "</head>";
+	}
+
+	public function getHtml($html_content = false, $html_atributes = false, $html_class = false) {
+		return "<html" . (!$html_atributes ? '' : " " . $html_atributes) . (!$html_class ? '' : " class='" . ($html_class) . "'") . ">" . (!$html_content ? '' : $html_content) . "</html>";
 	}
 
 	public function getBody($body_content = false, $body_class = false, $body_atributes = false) {
