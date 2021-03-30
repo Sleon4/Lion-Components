@@ -3,7 +3,9 @@
 class Components {
 
 	/* Lions Components 2.1 */
-	public function __construct() {}
+	public function __construct() {
+		
+	}
 
 	public function getDoctype() {
 		return "<!DOCTYPE html>";
