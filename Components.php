@@ -2,7 +2,7 @@
 
 class Components {
 
-	/* Lions Components 2.0 */
+	/* Lions Components 2.1 */
 	public function __construct() {}
 
 	public function getDoctype() {
