@@ -3,9 +3,7 @@
 class Components {
 
 	/* Lions Components 2.1 */
-	public function __construct() {
-		
-	}
+	public function __construct() {}
 
 	public function getDoctype() {
 		return "<!DOCTYPE html>";
@@ -239,7 +237,7 @@ class Components {
 	}
 
 	public function getForm($form_method, $form_content, $form_class = false, $form_atributes = false) {
-		return "<form method='" . ($form_method) . "' class='" . ($form_class) . "' " . (!$form_atributes ? '' : $form_atributes) . ">" . ($form_content) . "</form>";
+		return "<form " . (!$form_method ? '' : "method='" . ($form_method) . "'") . " class='" . ($form_class) . "' " . (!$form_atributes ? '' : $form_atributes) . ">" . ($form_content) . "</form>";
 	}
 
 	public function getIcon($icon_class) {
