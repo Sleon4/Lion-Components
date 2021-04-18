@@ -3,18 +3,23 @@
 class Components {
 
 	/* Lions Components 2.1 */
-	public function __construct() {}
+	public function __construct() {
 
+	}
+
+	/*
+	Components HTML
+	*/
 	public function getDoctype() {
 		return "<!DOCTYPE html>";
 	}
 
-	public function getHead($head_content = false, $head_atributes = false, $head_class = false) {
-		return "<head" . (!$head_atributes ? '' : " " . $head_atributes) . (!$head_class ? '' : " class='" . ($head_class) . "'") . ">" . (!$head_content ? '' : $head_content) . "</head>";
-	}
-
 	public function getHtml($html_content = false, $html_atributes = false, $html_class = false) {
 		return "<html" . (!$html_atributes ? '' : " " . $html_atributes) . (!$html_class ? '' : " class='" . ($html_class) . "'") . ">" . (!$html_content ? '' : $html_content) . "</html>";
+	}
+
+	public function getHead($head_content = false, $head_atributes = false, $head_class = false) {
+		return "<head" . (!$head_atributes ? '' : " " . $head_atributes) . (!$head_class ? '' : " class='" . ($head_class) . "'") . ">" . (!$head_content ? '' : $head_content) . "</head>";
 	}
 
 	public function getBody($body_content = false, $body_class = false, $body_atributes = false) {
@@ -36,6 +41,145 @@ class Components {
 		);
 	}
 
+	public function getH1($h_title, $h_class = false, $h_atributes = false) {
+		return "<h1 class='" . (!$h_class ? '' : $h_class) . "' " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h1>";
+	}
+
+	public function getH2($h_title, $h_class = false, $h_atributes = false) {
+		return "<h2 class='" . (!$h_class ? '' : $h_class) . "' " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h2>";
+	}
+
+	public function getH3($h_title, $h_class = false, $h_atributes = false) {
+		return "<h3 class='" . (!$h_class ? '' : $h_class) . "' " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h3>";
+	}
+
+	public function getH4($h_title, $h_class = false, $h_atributes = false) {
+		return "<h4 class='" . (!$h_class ? '' : $h_class) . "' " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h4>";
+	}
+
+	public function getH5($h_title, $h_class = false, $h_atributes = false) {
+		return "<h5 class='" . (!$h_class ? '' : $h_class) . "' " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h5>";
+	}
+
+	public function getH6($h_title, $h_class = false, $h_atributes = false) {
+		return "<h6 class='" . (!$h_class ? '' : $h_class) . "' " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h6>";
+	}
+
+	public function getBr() {
+		return "<br>";
+	}
+
+	public function getTitle($title_content) {
+		return "<title>" . ($title_content) . "</title>";
+	}
+
+	public function getMeta($meta_name = false, $meta_content = false, $meta_atributes = false) {
+		return "<meta" . (!$meta_name ? '' : " name='" . ($meta_name) . "'") . (!$meta_content ? '' : " content='" . ($meta_content) . "' ") . (!$meta_atributes ? '' : " " . $meta_atributes) . ">";
+	}
+
+	public function getLink($link_rel, $link_type, $link_href, $link_atributes = false) {
+		return "<link rel='" . ($link_rel) . "' type='" . ($link_type) . "' href='" . ($link_href) . "' " . (!$link_atributes ? '' : $link_atributes) . ">";
+	}
+
+	public function getScript($script_src = false, $script_atributes = false, $script_content = false) {
+		return "<script type='text/javascript' " . (!$script_src ? '' : "src='" . ($script_src) . "'") . (!$script_atributes ? '' : ' ' . $script_atributes) . ">" . (!$script_content ? '' : $script_content) . "</script>";
+	}
+
+	public function getStrong($strong_content) {
+		return "<strong>" . ($strong_content) . "</strong>";
+	}
+
+	public function getFooter($footer_class, $footer_content, $footer_atributes = false) {
+		return "<footer" . (!$footer_class ? '' : " class='" . ($footer_class) . "'") . (!$footer_atributes ? '' : " " . $footer_atributes) .">" . ($footer_content) . "</footer>";
+	}
+
+	public function getTd($td_content, $td_atributes = false) {
+		return "<td " . (!$td_atributes ? '' : $td_atributes) . ">" . ($td_content) . "</td>";
+	}
+
+	public function getTr($tr_content, $tr_atributes = false) {
+		return "<tr" . (!$tr_atributes ? '' : " " . $tr_atributes) . ">" . ($tr_content) . "</tr>";
+	}
+
+	public function getHr($hr_class = false) {
+		return "<hr" . (!$hr_class ? '' : " class='" . ($hr_class) . "'") . ">";
+	}
+
+	public function getNav($nav_class, $nav_content, $nav_atributes = false) {
+		return "<nav class='" . ($nav_class) . "' " . (!$nav_atributes ? '' : $nav_atributes) . ">" . ($nav_content) . "</nav>";
+	}
+
+	public function getLabel($label_content, $label_class = false, $label_atributes = false) {
+		return "<label " . (!$label_class ? '' : "class='" . ($label_class) . "'") . " " . (!$label_atributes ? '' : $label_atributes) . ">" . ($label_content) . "</label>";
+	}
+
+	public function getP($p_content, $p_class = false, $p_atributes = false) {
+		return "<p class='" . (!$p_class ? '' : $p_class) . "' " . (!$p_atributes ? '' : $p_atributes) . ">" . ($p_content) . "</p>";
+	}
+
+	public function getForm($form_method, $form_content, $form_class = false, $form_atributes = false) {
+		return "<form " . (!$form_method ? '' : "method='" . ($form_method) . "'") . " class='" . ($form_class) . "' " . (!$form_atributes ? '' : $form_atributes) . ">" . ($form_content) . "</form>";
+	}
+
+	public function getIcon($icon_class) {
+		return "<i class='" . ($icon_class) . "'></i>";
+	}
+
+	public function getDiv($div_class, $div_content = false, $div_atributes = false) {
+		return "<div class='" . ($div_class) . "' " . (!$div_atributes ? '' : $div_atributes) . ">" . (!$div_content ? '' : $div_content) . "</div>";
+	}
+
+	public function getSpan($span_class, $span_content = false, $span_atributes = false) {
+		return "<span class='" . (!$span_class ? '' : $span_class) . "' " . (!$span_atributes ? '' : $span_atributes) . ">" . (!$span_content ? '' : $span_content) . "</span>";
+	}
+
+	public function getImg($img_url, $img_class, $img_atributes = false) {		
+		return "<img src='" . ($img_url) . "' class='" . ($img_class) . "' loading='lazy' " . (!$img_atributes ? '' : $img_atributes) . ">";
+	}
+
+	public function getA($a_href, $a_class, $a_content, $a_atributes = false) {
+		return "<a href='" . ($a_href) . "' class='" . ($a_class) . "' " . (!$a_atributes ? '' : $a_atributes) . ">" . ($a_content) . "</a>";
+	}
+
+	public function getLi($li_class, $li_content, $li_atributes = false) {
+		return "<li class='" . ($li_class) . "' " . (!$li_atributes ? '' : $li_atributes) . ">" . ($li_content) . "</li>";
+	}
+
+	public function getUl($ul_class, $ul_content, $ul_atributes = false) {
+		return "<ul class='" . ($ul_class) . "' " . (!$ul_atributes ? '' : $ul_atributes) . ">" . ($ul_content) . "</ul>";
+	}
+
+	public function getSmall($small_content, $small_class, $small_atributes = false) {
+		return "<small class='" . ($small_class) . "' " . (!$small_atributes ? '' : $small_atributes) . ">" . ($small_content) . "</small>";
+	}
+
+	public function getTh($th_content, $th_class = false, $th_tributes = false) {
+		return "<th" . (!$th_class ? '' : " class='" . ($th_class) . "' ") . (!$th_tributes ? '' : " " . $th_tributes) . ">" . ($th_content) . "</th>";
+	}
+
+	public function getThead($thead_content, $thead_class = false, $thead_atributes = false) {
+		return "<thead class='" . (!$thead_class ? '' : $thead_class) . "' " . (!$thead_atributes ? '' : $thead_atributes) . ">" . ($thead_content) . "</thead>";
+	}
+
+	public function getTbody($tbody_content, $tbody_class = false, $tbody_atributes = false) {
+		return "<tbody class='" . (!$tbody_class ? '' : $tbody_class) . "' " . (!$tbody_atributes ? '' : $tbody_atributes) . ">" . ($tbody_content) . "</tbody>";
+	}
+
+	public function getTfooty($tfooty_content, $tfooty_class = false, $tfooty_atributes = false) {
+		return "<tfooty class='" . (!$tfooty_class ? '' : $tfooty_class) . "' " . (!$tfooty_atributes ? '' : $tfooty_atributes) . ">" . ($tfooty_content) . "</tfooty>";
+	}
+
+	public function getTable($table_class, $table_content, $table_atributes = false) {
+		return "<table class='" . ($table_class) . "' " . (!$table_atributes ? '' : $table_atributes) . ">" . ($table_content) . "</table>";
+	}
+
+	public function getOption($option_value, $option_content, $option_atributes = false) {
+		return "<option value='" . ($option_value) . "' " . (!$option_atributes ? '' : $option_atributes) . ">" . ($option_content) . "</option>";
+	}
+
+	/*
+	Components Bootstrap
+	*/
 	public function getModalDark($modal_title, $modal_id, $modal_class, $modal_content, $modal_buttons = false, $modal_form = false, $modal_static = false) {
 		return $this->getDiv("modal fade", 
 			$this->getDiv("modal-dialog " . ($modal_class), 
@@ -156,100 +300,12 @@ class Components {
 		);
 	}
 
-	public function getH1($h_title, $h_class = false, $h_atributes = false) {
-		return "<h1 class='" . (!$h_class ? '' : $h_class) . "' " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h1>";
-	}
-
-	public function getH2($h_title, $h_class = false, $h_atributes = false) {
-		return "<h2 class='" . (!$h_class ? '' : $h_class) . "' " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h2>";
-	}
-
-	public function getH3($h_title, $h_class = false, $h_atributes = false) {
-		return "<h3 class='" . (!$h_class ? '' : $h_class) . "' " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h3>";
-	}
-
-	public function getH4($h_title, $h_class = false, $h_atributes = false) {
-		return "<h4 class='" . (!$h_class ? '' : $h_class) . "' " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h4>";
-	}
-
-	public function getH5($h_title, $h_class = false, $h_atributes = false) {
-		return "<h5 class='" . (!$h_class ? '' : $h_class) . "' " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h5>";
-	}
-
-	public function getH6($h_title, $h_class = false, $h_atributes = false) {
-		return "<h6 class='" . (!$h_class ? '' : $h_class) . "' " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h6>";
-	}
-
-	public function getBr() {
-		return "<br>";
-	}
-
-	public function getTitle($title_content) {
-		return "<title>" . ($title_content) . "</title>";
-	}
-
-	public function getMeta($meta_name = false, $meta_content = false, $meta_atributes = false) {
-		return "<meta" . (!$meta_name ? '' : " name='" . ($meta_name) . "'") . (!$meta_content ? '' : " content='" . ($meta_content) . "' ") . (!$meta_atributes ? '' : " " . $meta_atributes) . ">";
-	}
-
-	public function getLink($link_rel, $link_type, $link_href, $link_atributes = false) {
-		return "<link rel='" . ($link_rel) . "' type='" . ($link_type) . "' href='" . ($link_href) . "' " . (!$link_atributes ? '' : $link_atributes) . ">";
-	}
-
-	public function getScript($script_src = false, $script_atributes = false, $script_content = false) {
-		return "<script type='text/javascript' " . (!$script_src ? '' : "src='" . ($script_src) . "'") . (!$script_atributes ? '' : ' ' . $script_atributes) . ">" . (!$script_content ? '' : $script_content) . "</script>";
-	}
-
-	public function getStrong($strong_content) {
-		return "<strong>" . ($strong_content) . "</strong>";
-	}
-
-	public function getFooter($footer_class, $footer_content, $footer_atributes = false) {
-		return "<footer" . (!$footer_class ? '' : " class='" . ($footer_class) . "'") . (!$footer_atributes ? '' : " " . $footer_atributes) .">" . ($footer_content) . "</footer>";
-	}
-
 	public function getCalendar($calendar_id, $calendar_class = false) {
 		return $this->getDiv(!$calendar_class ? '' : $calendar_class, "", "id='" . ($calendar_id) . "'");
 	}
 
-	public function getTd($td_content, $td_atributes = false) {
-		return "<td " . (!$td_atributes ? '' : $td_atributes) . ">" . ($td_content) . "</td>";
-	}
-
-	public function getTr($tr_content, $tr_atributes = false) {
-		return "<tr" . (!$tr_atributes ? '' : " " . $tr_atributes) . ">" . ($tr_content) . "</tr>";
-	}
-
-	public function getHr($hr_class = false) {
-		return "<hr" . (!$hr_class ? '' : " class='" . ($hr_class) . "'") . ">";
-	}
-
-	public function getNav($nav_class, $nav_content, $nav_atributes = false) {
-		return "<nav class='" . ($nav_class) . "' " . (!$nav_atributes ? '' : $nav_atributes) . ">" . ($nav_content) . "</nav>";
-	}
-
-	public function getLabel($label_content, $label_class = false, $label_atributes = false) {
-		return "<label " . (!$label_class ? '' : "class='" . ($label_class) . "'") . " " . (!$label_atributes ? '' : $label_atributes) . ">" . ($label_content) . "</label>";
-	}
-
-	public function getP($p_content, $p_class = false, $p_atributes = false) {
-		return "<p class='" . (!$p_class ? '' : $p_class) . "' " . (!$p_atributes ? '' : $p_atributes) . ">" . ($p_content) . "</p>";
-	}
-
-	public function getForm($form_method, $form_content, $form_class = false, $form_atributes = false) {
-		return "<form " . (!$form_method ? '' : "method='" . ($form_method) . "'") . " class='" . ($form_class) . "' " . (!$form_atributes ? '' : $form_atributes) . ">" . ($form_content) . "</form>";
-	}
-
-	public function getIcon($icon_class) {
-		return "<i class='" . ($icon_class) . "'></i>";
-	}
-
 	public function getChart($chart_class, $chart_height = false) {
 		return "<canvas class='" . ($chart_class) . "' " . (!$chart_height ? '' : "height='" . ($chart_height) . "'") . "></canvas>";
-	}
-
-	public function getDiv($div_class, $div_content = false, $div_atributes = false) {
-		return "<div class='" . ($div_class) . "' " . (!$div_atributes ? '' : $div_atributes) . ">" . (!$div_content ? '' : $div_content) . "</div>";
 	}
 
 	public function getBtnSubmit($btn_class, $btn_value, $btn_content) {
@@ -323,10 +379,6 @@ class Components {
 		);
 	}
 
-	public function getSpan($span_class, $span_content = false, $span_atributes = false) {
-		return "<span class='" . (!$span_class ? '' : $span_class) . "' " . (!$span_atributes ? '' : $span_atributes) . ">" . (!$span_content ? '' : $span_content) . "</span>";
-	}
-
 	public function getAlert($alert_type, $alert_class, $alert_content) {
 		return $this->getDiv("alert alert-" . ($alert_type) . " alert-dismissible fade show " . (!$alert_class ? "" : $alert_class), 
 			($alert_content) .
@@ -337,14 +389,6 @@ class Components {
 		);
 	}
 
-	public function getImg($img_url, $img_class, $img_atributes = false) {		
-		return "<img src='" . ($img_url) . "' class='" . ($img_class) . "' loading='lazy' " . (!$img_atributes ? '' : $img_atributes) . ">";
-	}
-
-	public function getA($a_href, $a_class, $a_content, $a_atributes = false) {
-		return "<a href='" . ($a_href) . "' class='" . ($a_class) . "' " . (!$a_atributes ? '' : $a_atributes) . ">" . ($a_content) . "</a>";
-	}
-
 	public function getMediaObject($media_url, $media_class, $media_title, $media_content) {
 		return $this->getDiv("media " . (!$media_class ? "" : $media_class), 
 			$this->getImg($media_url, "mr-3", "width='64' height='64'") .
@@ -353,14 +397,6 @@ class Components {
 				(empty($media_content) ? "" : $media_content)
 			)
 		);
-	}
-
-	public function getLi($li_class, $li_content, $li_atributes = false) {
-		return "<li class='" . ($li_class) . "' " . (!$li_atributes ? '' : $li_atributes) . ">" . ($li_content) . "</li>";
-	}
-
-	public function getUl($ul_class, $ul_content, $ul_atributes = false) {
-		return "<ul class='" . ($ul_class) . "' " . (!$ul_atributes ? '' : $ul_atributes) . ">" . ($ul_content) . "</ul>";
 	}
 
 	public function getList($list_items, $list_class = false) {
@@ -399,10 +435,6 @@ class Components {
 		);
 	}
 
-	public function getSmall($small_content, $small_class, $small_atributes = false) {
-		return "<small class='" . ($small_class) . "' " . (!$small_atributes ? '' : $small_atributes) . ">" . ($small_content) . "</small>";
-	}
-
 	public function getCardSimpleImg($card_url, $card_title, $card_sub_title, $card_content, $card_time, $card_atributes = false) {
 		return $this->getDiv("card mb-3", 
 			$this->getImg($card_url, "card-img-top") .
@@ -429,26 +461,6 @@ class Components {
 		);
 	}
 
-	public function getTh($th_content, $th_class = false, $th_tributes = false) {
-		return "<th" . (!$th_class ? '' : " class='" . ($th_class) . "' ") . (!$th_tributes ? '' : " " . $th_tributes) . ">" . ($th_content) . "</th>";
-	}
-
-	public function getThead($thead_content, $thead_class = false, $thead_atributes = false) {
-		return "<thead class='" . (!$thead_class ? '' : $thead_class) . "' " . (!$thead_atributes ? '' : $thead_atributes) . ">" . ($thead_content) . "</thead>";
-	}
-
-	public function getTbody($tbody_content, $tbody_class = false, $tbody_atributes = false) {
-		return "<tbody class='" . (!$tbody_class ? '' : $tbody_class) . "' " . (!$tbody_atributes ? '' : $tbody_atributes) . ">" . ($tbody_content) . "</tbody>";
-	}
-
-	public function getTfooty($tfooty_content, $tfooty_class = false, $tfooty_atributes = false) {
-		return "<tfooty class='" . (!$tfooty_class ? '' : $tfooty_class) . "' " . (!$tfooty_atributes ? '' : $tfooty_atributes) . ">" . ($tfooty_content) . "</tfooty>";
-	}
-
-	public function getTable($table_class, $table_content, $table_atributes = false) {
-		return "<table class='" . ($table_class) . "' " . (!$table_atributes ? '' : $table_atributes) . ">" . ($table_content) . "</table>";
-	}
-
 	public function getTableData($table_type, $table_class, $table_color, $table_title, $table_content) {
 		$title = null; for ($i = 0; $i < count($table_title); $i++) {
 			$title.= $this->getTh($table_title[$i]);
@@ -460,10 +472,6 @@ class Components {
 				$this->getTbody($table_content)
 			)
 		);
-	}
-
-	public function getOption($option_value, $option_content, $option_atributes = false) {
-		return "<option value='" . ($option_value) . "' " . (!$option_atributes ? '' : $option_atributes) . ">" . ($option_content) . "</option>";
 	}
 
 	public function getSelect($select_type, $select_name, $select_class, $select_id, $select_rows, $select_columns, $select_atributes = false) {
