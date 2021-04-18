@@ -189,7 +189,7 @@ class Components {
 	}
 
 	public function getMeta($meta_name = false, $meta_content = false, $meta_atributes = false) {
-		return "<meta" . (!$meta_name ? '' : " name='" . ($meta_name) . "'") . (!$meta_content ? '' : "content='" . ($meta_content) . "'") . (!$meta_atributes ? '' : " " . $meta_atributes) . ">";
+		return "<meta" . (!$meta_name ? '' : " name='" . ($meta_name) . "'") . (!$meta_content ? '' : " content='" . ($meta_content) . "' ") . (!$meta_atributes ? '' : " " . $meta_atributes) . ">";
 	}
 
 	public function getLink($link_rel, $link_type, $link_href, $link_atributes = false) {
