@@ -4,7 +4,7 @@ class Components {
 
 	/* Lions Components 2.1 */
 	public function __construct() {
-
+		
 	}
 
 	/*
@@ -12,6 +12,10 @@ class Components {
 	*/
 	public function getDoctype() {
 		return "<!DOCTYPE html>";
+	}
+
+	public function getInput($input_type, $input_class, $input_atributes = false) {
+		return "<input type='" . ($input_type) . "' class='" . ($input_class) . "' " . (!$input_atributes ? '' : $input_atributes) . ">";
 	}
 
 	public function getHtml($html_content = false, $html_atributes = false, $html_class = false) {
@@ -328,6 +332,10 @@ class Components {
 		return "<button type='button' class='btn btn-" . ($btn_class) . "' data-toggle='modal' data-target='#" . ($btn_modal_view) . "'>" . ($btn_content) . "</button>";
 	}
 
+	public function getInputRange($input_name, $input_id, $input_class, $input_atributes = false) {
+		return "<input type='range' name='" . ($input_name) . "' id='" . ($input_id) . "' class='custom-range " . (!$input_class ? '' : $input_class) . "' " . (!$input_atributes ? '' : $input_atributes) . ">";
+	}
+
 	public function getInputColor($input_name, $input_id, $input_class, $input_atributes = false) {
 		return "<input type='color' name='" . ($input_name) . "' id='" . ($input_id) . "' class='form-control " . (!$input_class ? '' : $input_class) . "' " . (!$input_atributes ? '' : $input_atributes) . ">";
 	}
@@ -399,16 +407,16 @@ class Components {
 		);
 	}
 
-	public function getList($list_items, $list_class = false) {
-		$items = null; for ($i =0; $i < count($list_items); $i++) { 
+	public function getList($list_items, $list_class = false, $items = null) {
+		for ($i =0; $i < count($list_items); $i++) { 
 			$items.= $this->getLi("list-group-item", $list_items[$i]);
 		}
 
 		return $this->getUl(!$list_class ? "" : $list_class, $items);
 	}
 
-	public function getCardSimpleLinks($card_class, $card_title, $card_sub_title, $card_content, $card_link = false) {
-		$links = null; if ($card_link != false) {
+	public function getCardSimpleLinks($card_class, $card_title, $card_sub_title, $card_content, $card_link = false, $links = null) {
+		if ($card_link != false) {
 			for ($i = 0; $i < count($card_link); $i++) { 
 				$links.= $card_link[$i];
 			}
@@ -461,8 +469,8 @@ class Components {
 		);
 	}
 
-	public function getTableData($table_type, $table_class, $table_color, $table_title, $table_content) {
-		$title = null; for ($i = 0; $i < count($table_title); $i++) {
+	public function getTableData($table_type, $table_class, $table_color, $table_title, $table_content, $title = null) {
+		for ($i = 0; $i < count($table_title); $i++) {
 			$title.= $this->getTh($table_title[$i]);
 		}
 
@@ -474,9 +482,7 @@ class Components {
 		);
 	}
 
-	public function getSelect($select_type, $select_name, $select_class, $select_id, $select_rows, $select_columns, $select_atributes = false) {
-		$module = null;
-
+	public function getSelect($select_type, $select_name, $select_class, $select_id, $select_rows, $select_columns, $select_atributes = false, $module = null) {
 		if ($select_type) {
 			foreach ($select_rows as $key => $data) {
 				if (count($select_columns) > 4) {
@@ -502,21 +508,26 @@ class Components {
 		return "<select name='" . ($select_name) . "' class='" . (!$select_class ? '' : $select_class) . "' id='" . ($select_id) . "' " . (!$select_atributes ? '' : $select_atributes) . ">" . $this->getOption("", "Seleccione", "selected") . ($module) . "</select>";
 	}
 
-	public function getNavs($navs_title, $navs_content) {
-		$title = null; for ($i = 0; $i < count($navs_title); $i++) {
-			$title.= $this->getLi("nav-item", $this->getA(("#" . ($navs_title[$i][0])), ("nav-link " . ($i === 0 ? 'active' : '')), ($navs_title[$i][1]), "data-toggle='tab' role='tab' aria-selected='" . ($i === 0 ? 'true' : 'false') . "'"), "role='presentation'");
+	public function getNavs($navs_title, $navs_content, $title = null, $content = null) {
+		for ($i = 0; $i < count($navs_title); $i++) {
+			$title.= $this->getLi("nav-item", 
+				$this->getA(("#" . ($navs_title[$i][0])), ("nav-link " . ($i === 0 ? 'active' : '')), ($navs_title[$i][1]), "data-toggle='tab' role='tab' aria-selected='" . ($i === 0 ? 'true' : 'false') . "'"), 
+				"role='presentation'"
+			);
 		}
 
-		$content = null; for ($j = 0; $j < count($navs_content); $j++) { 
-			$content.= $this->getDiv(("tab-pane fade " . ($j === 0 ? 'show active' : '')), ($navs_content[$j][0]), "role='tabpanel' id='" . ($navs_content[$j][1]) . "'");
+		for ($j = 0; $j < count($navs_content); $j++) { 
+			$content.= $this->getDiv(("tab-pane fade " . ($j === 0 ? 'show active' : '')), 
+				($navs_content[$j][0]), "role='tabpanel' id='" . ($navs_content[$j][1]) . "'"
+			);
 		}
 
-		return $this->getUl("nav nav-tabs", $title, "role='tablist'") . $this->getDiv("tab-content", $content);
+		return $this->getUl("nav nav-tabs", $title, "role='tablist'") . $this->getDiv("tab-content", 
+			$content
+		);
 	}
 
-	public function getFeedback($feedback_type = false, $feedback_content = false) {
-		$module = null;
-		
+	public function getFeedback($feedback_type = false, $feedback_content = false, $module = null) {
 		if (!$feedback_type) {
 			$module = $this->getDiv("valid-feedback", "Campo Valido") . $this->getDiv("invalid-feedback", "Campo Invalido");
 		} elseif ($feedback_type === "text") {
