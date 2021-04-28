@@ -332,6 +332,10 @@ class Components {
 		return "<button type='button' class='btn btn-" . ($btn_class) . "' data-toggle='modal' data-target='#" . ($btn_modal_view) . "'>" . ($btn_content) . "</button>";
 	}
 
+	public function getInputTel($input_name, $input_id, $input_class, $input_atributes = false) {
+		return "<input type='tel' name='" . ($input_name) . "' id='" . ($input_id) . "' class='form-control " . (!$input_class ? '' : $input_class) . "' " . (!$input_atributes ? '' : $input_atributes) . ">";
+	}
+
 	public function getInputRange($input_name, $input_id, $input_class, $input_atributes = false) {
 		return "<input type='range' name='" . ($input_name) . "' id='" . ($input_id) . "' class='custom-range " . (!$input_class ? '' : $input_class) . "' " . (!$input_atributes ? '' : $input_atributes) . ">";
 	}
@@ -443,7 +447,7 @@ class Components {
 		);
 	}
 
-	public function getCardSimpleImg($card_url, $card_title, $card_sub_title, $card_content, $card_time, $card_atributes = false) {
+	public function getCardSimpleImg($card_url, $card_title, $card_sub_title, $card_content, $card_time, $card_content_extra = false, $card_atributes = false) {
 		return $this->getDiv("card mb-3", 
 			$this->getImg($card_url, "card-img-top") .
 			$this->getDiv("card-body", 
@@ -451,13 +455,11 @@ class Components {
 				$this->getH6($card_sub_title, "card-subtitle mb-2 text-muted") .
 				$this->getP($card_content, "card-text")
 			) .
-			(!$card_atributes ? "" : $card_atributes) .
-			$this->getDiv("card-body", 
-				$this->getP(
-					$this->getSmall($card_time, "text-muted"), 
-					"card-text"
-				)
-			)
+			(!$card_content_extra ? "" : $card_content_extra) .
+			$this->getDiv("card-footer", 
+				$this->getP($this->getSmall($card_time, "text-muted"), "card-text")
+			),
+			(!$card_atributes ? '' : $card_atributes)
 		);
 	}
 
