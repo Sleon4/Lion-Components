@@ -2,7 +2,7 @@
 
 class Components {
 
-	/* Lions Components 2.1 */
+	/* Lions Components 2.2 */
 	public function __construct() {
 		
 	}
@@ -10,6 +10,14 @@ class Components {
 	/*
 	Components HTML
 	*/
+	public function getUrl($url) {
+		return "http://localhost/LF/" . ($url) . "/";
+	}
+
+	public function getA($a_href, $a_class, $a_content, $a_atributes = false) {
+		return "<a href='" . ($a_href) . "' class='" . ($a_class) . "' " . (!$a_atributes ? '' : $a_atributes) . ">" . ($a_content) . "</a>";
+	}
+
 	public function getDoctype() {
 		return "<!DOCTYPE html>";
 	}
@@ -139,10 +147,6 @@ class Components {
 
 	public function getImg($img_url, $img_class, $img_atributes = false) {		
 		return "<img src='" . ($img_url) . "' class='" . ($img_class) . "' loading='lazy' " . (!$img_atributes ? '' : $img_atributes) . ">";
-	}
-
-	public function getA($a_href, $a_class, $a_content, $a_atributes = false) {
-		return "<a href='" . ($a_href) . "' class='" . ($a_class) . "' " . (!$a_atributes ? '' : $a_atributes) . ">" . ($a_content) . "</a>";
 	}
 
 	public function getLi($li_class, $li_content, $li_atributes = false) {
