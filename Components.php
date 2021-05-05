@@ -2,16 +2,18 @@
 
 class Components {
 
+	private $url_host;
+
 	/* Lions Components 2.2 */
-	public function __construct() {
-		
+	public function __construct($url_host) {
+		$this->url_host = $url_host;
 	}
 
 	/*
 	Components HTML
 	*/
 	public function getUrl($url) {
-		return "http://localhost/LF/" . ($url) . "/";
+		return ($this->url_host . $url . "/");
 	}
 
 	public function getA($a_href, $a_class, $a_content, $a_atributes = false) {
