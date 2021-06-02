@@ -1,6 +1,6 @@
 <?php 
 require_once("Components.php");
-$cmp = new Components(); 
+$cmp = new Components("http://localhost/Components/"); 
 
 echo($cmp->getDoctype() .
 	$cmp->getHtml(
@@ -44,9 +44,9 @@ echo($cmp->getDoctype() .
 			) .
 			$cmp->getMain("flex-shrink-0", 
 				$cmp->getDiv("container", 
-					$cmp->geth1("Hola titulo", "mt-5") .
-					$cmp->getP("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "lead"),
-					$cmp->getAttribute(["id", "data"], ["efe", "hola"], "")
+					$cmp->geth1("Hola titulo", "mt-5 pt-4") .
+					$cmp->getImg("http://localhost/LF/app/res/values/Img/Modules/Home/cars_4.jpg", "img-fluid") .
+					$cmp->getP("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "lead")
 				),
 				"role='main'"
 			) .
