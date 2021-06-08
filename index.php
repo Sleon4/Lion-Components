@@ -28,7 +28,18 @@ echo($cmp->html(false, "lang='es'",
 						$cmp->li($cmp->a("index.php", "link 3", "nav-link"), "nav-item") .
 						$cmp->li($cmp->a("index.php", "link 4", "nav-link"), "nav-item") .
 						$cmp->li($cmp->a("index.php", "link 5", "nav-link"), "nav-item") .
-						$cmp->li($cmp->a("index.php", "link 6", "nav-link"), "nav-item"), 
+						$cmp->li($cmp->a("index.php", "link 6", "nav-link"), "nav-item") .
+						$cmp->li(
+							$cmp->a("#", "link 7", "nav-link dropdown-toggle", "role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'") .
+							$cmp->div("dropdown-menu", 
+								$cmp->a("index.php", "link 7", "dropdown-item") .
+								$cmp->a("index.php", "link 8", "dropdown-item") .
+								$cmp->a("index.php", "link 10", "dropdown-item") .
+								$cmp->div("dropdown-divider") .
+								$cmp->a("index.php", "link 11", "dropdown-item disabled")
+							), 
+							"nav-item dropdown"
+						), 
 						"navbar-nav mr-auto"
 					) .
 					$cmp->form(false, "form-inline my-2 my-lg-0", false, 
@@ -43,6 +54,7 @@ echo($cmp->html(false, "lang='es'",
 			$cmp->div("col-lg-12 mx-auto mt-3 mb-3 bg-white shadow p-2", 
 				$cmp->div("row", 
 					$cmp->div("col-lg-8", 
+						$cmp->h3("Data table") .
 						$cmp->bsDataTable("table-striped", false, 
 							["Nombres", "Apellidos", "Edad"], 
 							[
@@ -175,21 +187,14 @@ echo($cmp->html(false, "lang='es'",
 						$cmp->h3("Media object") .
 						$cmp->bsMediaOject("mt-3", 
 							["http://localhost/LF/app/res/values/img/Icono.png", "", "alt='Icono' width='64' height='64'"],
-							["Titulo", "Lorem ipsum dolor sit amet, Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
-								$cmp->bsMediaOject("", 
-									["http://localhost/LF/app/res/values/img/Icono.png", "", "alt='Icono' width='64' height='64'"],
-									["Titulo", "Lorem ipsum dolor sit amet, Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", null]
-								) .
-								$cmp->bsMediaOject("", 
-									["http://localhost/LF/app/res/values/img/Icono.png", "", "alt='Icono' width='64' height='64'"],
-									["Titulo", "Lorem ipsum dolor sit amet, Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", null]
-								)
-							]
+							["Titulo", "Lorem ipsum dolor sit amet, Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", null]
 						) .
 						$cmp->bsMediaOject("", 
 							["http://localhost/LF/app/res/values/img/Icono.png", "", "alt='Icono' width='64' height='64'"],
 							["Titulo", "Lorem ipsum dolor sit amet, Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", null]
-						)
+						) .
+						$cmp->h3("Iframe") .
+						$cmp->bsIframe("16by9 mb-3", "https://www.youtube.com/embed/zpOULjyy-n8?rel=0", false, "allowfullscreen")
 					) .
 					$cmp->div("col-lg-4", 
 						$cmp->h3("Progress bar") .
@@ -218,7 +223,7 @@ echo($cmp->html(false, "lang='es'",
 						$cmp->hr() .
 						$cmp->h3("Modal") .
 						$cmp->button("button", "Pulsar", "btn btn-primary btn-block", 'data-toggle="modal" data-target="#modal_example"') .
-						$cmp->bsModal("modal_example", "modal-lg", 
+						$cmp->bsModal("modal_example", "", 
 							["Titulo de ventana", "text-white", "bg-primary"], 
 							[
 								$cmp->div("row", 
@@ -239,7 +244,7 @@ echo($cmp->html(false, "lang='es'",
 							true, false
 						) .
 						$cmp->button("button", "Pulsar", "btn btn-success btn-block mt-3", 'data-toggle="modal" data-target="#modal_example_2"') .
-						$cmp->bsModal("modal_example_2", "modal-lg", 
+						$cmp->bsModal("modal_example_2", "", 
 							["Titulo de ventana", "text-white", "bg-success"], 
 							[
 								$cmp->div("row", 
@@ -258,6 +263,40 @@ echo($cmp->html(false, "lang='es'",
 								$cmp->button("button", "Close", "btn btn-success", "data-dismiss='modal'")
 							], 
 							true, true
+						) .
+						$cmp->hr() .
+						$cmp->h3("Navs") .
+						$cmp->bsNavs("tabs",
+							[
+								["home", "Home"],
+								["home2", "Home2"],
+								["home3", "Home3"],
+								["home4", "Home4"],
+								["home5", "Home5"]
+							], 
+							[
+								[$cmp->div("mt-3 mb-3", "1- Lorem ipsum dolor sit amet, Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")],
+								[$cmp->div("mt-3 mb-3", "2- Lorem ipsum dolor sit amet, Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")],
+								[$cmp->div("mt-3 mb-3", "3- Lorem ipsum dolor sit amet, Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")],
+								[$cmp->div("mt-3 mb-3", "4- Lorem ipsum dolor sit amet, Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")],
+								[$cmp->div("mt-3 mb-3", "5- Lorem ipsum dolor sit amet, Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")]
+							]
+						) .
+						$cmp->bsNavs("pills",
+							[
+								["home6", "Home6"],
+								["home7", "Home7"],
+								["home8", "Home8"],
+								["home9", "Home9"],
+								["home10", "Home10"]
+							], 
+							[
+								[$cmp->div("mt-3 mb-3", "6- Lorem ipsum dolor sit amet, Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")],
+								[$cmp->div("mt-3 mb-3", "7- Lorem ipsum dolor sit amet, Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")],
+								[$cmp->div("mt-3 mb-3", "8- Lorem ipsum dolor sit amet, Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")],
+								[$cmp->div("mt-3 mb-3", "9- Lorem ipsum dolor sit amet, Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")],
+								[$cmp->div("mt-3 mb-3", "10- Lorem ipsum dolor sit amet, Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")]
+							]
 						)
 					)
 				)

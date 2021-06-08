@@ -103,7 +103,7 @@ class ComponentsBootstrap4 extends Components {
 				);
 			}
 		}
-		
+
 		return $this->div("list-group ". $list_class, $content, (!$list_atributes ? "" : $list_atributes));
 	}
 
@@ -122,7 +122,7 @@ class ComponentsBootstrap4 extends Components {
 		$data = null; for ($i = 0; $i < count($content); $i++) { 
 			$data.= $this->div("progress-bar " . $content[$i][0], "", 'role="progressbar" style="width: ' . ($content[$i][1]) . '%" aria-valuenow="' . ($content[$i][1]) . '" aria-valuemin="0" aria-valuemax="100"');
 		}
-		
+
 		return $this->div("progress " . $progress_class, $data);
 	}
 
@@ -162,6 +162,51 @@ class ComponentsBootstrap4 extends Components {
 				)
 			), 
 			"id='" . ($modal_id) . "' data-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true' " . (!$modal_static ? "" : "data-backdrop='static'")
+		);
+	}
+
+	public function bsNavs(string $navs_type, array $navs_id, array $navs_content): string {
+		$tabs = null; $content = null; 
+		for ($i = 0; $i < count($navs_id); $i++) { 
+			if ($i === 0) {
+				if ($navs_type === "tabs") {
+					$tabs = $this->a("#" . $navs_id[$i][0], $navs_id[$i][1], "nav-link active", "data-toggle='tab' role='tab' aria-controls='" . ($navs_id[$i][0]) . "' aria-selected='true'");
+				} elseif ($navs_type === "pills") {
+					$tabs = $this->li(
+						$this->a("#" . $navs_id[$i][0], $navs_id[$i][1], "nav-link active", "data-toggle='pill' role='tab' aria-controls='" . ($navs_id[$i][0]) . "' aria-selected='true'"), 
+						"nav-item", 
+						"role='presentation'"
+					);
+				}
+				
+				$content = $this->div("tab-pane fade show active", $navs_content[$i][0], "id='" . ($navs_id[$i][0]) . "' role='tabpanel'");
+			} else {
+				if ($navs_type === "tabs") {
+					$tabs.= $this->a("#" . $navs_id[$i][0], $navs_id[$i][1], "nav-link", "data-toggle='tab' role='tab' aria-controls='" . ($navs_id[$i][0]) . "' aria-selected='false'");
+				} elseif ($navs_type === "pills") {
+					$tabs.= $this->li(
+						$this->a("#" . $navs_id[$i][0], $navs_id[$i][1], "nav-link", "data-toggle='pill' role='tab' aria-controls='" . ($navs_id[$i][0]) . "' aria-selected='false'"), 
+						"nav-item", 
+						"role='presentation'"
+					);
+				}
+				
+				$content.= $this->div("tab-pane fade", $navs_content[$i][0], "id='" . ($navs_id[$i][0]) . "' role='tabpanel'");
+			}
+		}
+
+		if ($navs_type === "tabs") {
+			return $this->nav(false, false, 
+				$this->div("nav nav-tabs", $tabs, "id='nav-tab' role='tablist'")
+			) . $this->div("tab-content", $content);
+		} elseif ($navs_type === "pills") {
+			return $this->ul($tabs, "nav nav-pills mb-3", "role='tablist'") . $this->div("tab-content", $content);
+		}
+	}
+
+	public function bsIframe(string $iframe_ratio, string $iframe_src, string|bool $iframe_class = false, string|bool $iframe_atributes = false): string {
+		return $this->div("embed-responsive embed-responsive-" . $iframe_ratio, 
+			$this->iframe($iframe_src, "embed-responsive-item " . $iframe_class, $iframe_atributes)
 		);
 	}
 

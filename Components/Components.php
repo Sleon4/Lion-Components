@@ -251,10 +251,8 @@ class Components {
 		return "<small " . (!$small_class ? "" : "class='" . ($small_class) . "'") . " " . (!$small_atributes ? '' : $small_atributes) . ">" . ($small_content) . "</small>";
 	}
 
-	/*public function iframe(string $iframe_src, string|bool $iframe_class = false, string|bool $iframe_atributes = false): string {
-		return $this->div("embed-responsive embed-responsive-16by9", 
-			"<iframe class='embed-responsive-item " . (!$iframe_class ? '' : $iframe_class) . "' src='" . ($iframe_src) . "' allowfullscreen " . (!$iframe_atributes ? '' : $iframe_atributes) . "></iframe>"
-		);
-	}*/
+	public function iframe(string $iframe_src, string|bool $iframe_class = false, string|bool $iframe_atributes = false): string {
+		return "<iframe class='" . (!$iframe_class ? '' : $iframe_class) . "' src='" . ($iframe_src) . "' " . (!$iframe_atributes ? '' : $iframe_atributes) . "></iframe>";
+	}
 
 }
