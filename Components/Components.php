@@ -5,7 +5,7 @@ class Components {
 	private $url_host;
 
 	/* 
-	Lion components 2.4 
+	Lion components 2.5
 	*/
 	public function __construct($url_host) {
 		$this->url_host = $url_host;
@@ -131,23 +131,38 @@ class Components {
 		return "<table class='" . ($table_class) . "' " . (!$table_atributes ? '' : $table_atributes) . ">" . ($table_title . " " . $table_content) . "</table>";
 	}
 
-	public function dataTable(string|bool $table_class, string|bool $table_atributes, array $table_title, array $table_content, array $table_methods, bool $table_tfoot = false): string {
-		$title = null; for ($i = 0; $i < count($table_title); $i++) { 
+	public function dataTable(string|bool $table_class, array|bool $table_atributes, array $table_title, array $table_content, array $table_methods, bool $table_tfoot = false): string {
+		$title = ""; $content = ""; $obj = ""; $atributes = "";
+
+		for ($i = 0; $i < count($table_title); $i++) { 
 			$title.= $this->th($table_title[$i], false, "scope='col'");
 		}
 
-		$content = null; $obj = null; foreach ($table_content as $key => $data) {
-			foreach ($table_methods as $key => $methods) {
+		foreach ($table_content as $key => $data) {
+			foreach ($table_methods as $key2 => $methods) {
 				$obj.= $this->td($data->$methods());
 			}
 
-			$content.= $this->tr($obj);
-			$obj = null;
+			if ($table_atributes != false) {
+				foreach ($table_atributes[1] as $key3 => $value) {
+					if ($value['type'] === "data") {
+						foreach ($value['value'] as $key4 => $value2) {
+							$atributes.= "data-" . $value['content'] . "='" . ($data->$value2()) . "'";
+						}
+					} elseif ($value['type'] === "modal") {
+						$atributes.= 'data-toggle="modal" data-target="#' . ($value['value']) . '"';
+					}
+				}
+			}
+
+			$content.= $this->tr($obj, $atributes);
+			$atributes = "";
+			$obj = "";
 		}
 
 		return $this->table(
 			"data_tbl " . $table_class, 
-			$table_atributes, 
+			!$table_atributes ? "" : $table_atributes[0], 
 			$this->thead($this->tr($title)), 
 			$this->tbody($content) . (!$table_tfoot ? "" : $this->tfoot($this->tr($title)))
 		);
@@ -171,28 +186,28 @@ class Components {
 		return "<canvas class='" . ($chart_class) . "' " . (!$chart_height ? '' : "height='" . ($chart_height) . "'") . "></canvas>";
 	}
 
-	public function h1(string $h_title, string|bool $h_class = false, string|bool $h_atributes = false): string {
-		return "<h1 " . (!$h_class ? '' : "class='" . ($h_class) . "'") . " " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h1>";
+	public function h1(string $h_content, string|bool $h_class = false, string|bool $h_atributes = false): string {
+		return "<h1 " . (!$h_class ? '' : "class='" . ($h_class) . "'") . " " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_content) . "</h1>";
 	}
 
-	public function h2(string $h_title, string|bool $h_class = false, string|bool $h_atributes = false): string {
-		return "<h2 " . (!$h_class ? '' : "class='" . ($h_class) . "'") . " " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h2>";
+	public function h2(string $h_content, string|bool $h_class = false, string|bool $h_atributes = false): string {
+		return "<h2 " . (!$h_class ? '' : "class='" . ($h_class) . "'") . " " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_content) . "</h2>";
 	}
 
-	public function h3(string $h_title, string|bool $h_class = false, string|bool $h_atributes = false): string {
-		return "<h3 " . (!$h_class ? '' : "class='" . ($h_class) . "'") . " " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h3>";
+	public function h3(string $h_content, string|bool $h_class = false, string|bool $h_atributes = false): string {
+		return "<h3 " . (!$h_class ? '' : "class='" . ($h_class) . "'") . " " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_content) . "</h3>";
 	}
 
-	public function h4(string $h_title, string|bool $h_class = false, string|bool $h_atributes = false): string {
-		return "<h4 " . (!$h_class ? '' : "class='" . ($h_class) . "'") . " " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h4>";
+	public function h4(string $h_content, string|bool $h_class = false, string|bool $h_atributes = false): string {
+		return "<h4 " . (!$h_class ? '' : "class='" . ($h_class) . "'") . " " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_content) . "</h4>";
 	}
 
-	public function h5(string $h_title, string|bool $h_class = false, string|bool $h_atributes = false): string {
-		return "<h5 " . (!$h_class ? '' : "class='" . ($h_class) . "'") . " " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h5>";
+	public function h5(string $h_content, string|bool $h_class = false, string|bool $h_atributes = false): string {
+		return "<h5 " . (!$h_class ? '' : "class='" . ($h_class) . "'") . " " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_content) . "</h5>";
 	}
 
-	public function h6(string $h_title, string|bool $h_class = false, string|bool $h_atributes = false): string {
-		return "<h6 " . (!$h_class ? '' : "class='" . ($h_class) . "'") . " " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_title) . "</h6>";
+	public function h6(string $h_content, string|bool $h_class = false, string|bool $h_atributes = false): string {
+		return "<h6 " . (!$h_class ? '' : "class='" . ($h_class) . "'") . " " . (!$h_atributes ? '' : $h_atributes) . ">" . ($h_content) . "</h6>";
 	}
 
 	public function br(): string {

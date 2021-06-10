@@ -5,7 +5,7 @@ require_once("Components.php");
 class ComponentsBootstrap4 extends Components {
 	
 	/* 
-	Lion components 2.4 
+	Lion components 2.5
 	*/
 	public function __construct(string $host) {
 		parent::__construct($host);
@@ -26,14 +26,6 @@ class ComponentsBootstrap4 extends Components {
 			$this->label("Seleccionar Archivo", "custom-file-label", "for='" . ($input_id) . "'")
 		);
 	}
-	
-	public function getInputFile($input_name, $input_id, $input_class, $input_atributes = false): string {
-		return $this->div("custom-file", 
-			"<input type='file' name='" . ($input_name) . "' class='" . ("custom-file-input " . (!$input_class ? '' : $input_class)) . "' id='" . ($input_id) . "' onchange='inputFileName(this.value, " . '"label-' . ($input_id) . '"' . ")' " . (!$input_atributes ? '' : $input_atributes) . ">".
-			$this->getLabel("Seleccione", "custom-file-label", "for='" . ($input_id) . "' id='label-" . ($input_id) . "'") .
-			$this->getFeedback("file")
-		);
-	}
 
 	public function bsSelect(string $select_name, string $select_id, string|bool $select_class, string $select_content, string|bool $select_atributes = false): string {
 		return "<select name='" . ($select_name) . "' id='" . ($select_id) . "' " . (!$select_class ? "class='custom-select'" : "class='custom-select " . ($select_class) . "'") . " " . (!$select_atributes ? "" : $select_atributes) . ">" . ($select_content) . "</select>";
@@ -49,7 +41,7 @@ class ComponentsBootstrap4 extends Components {
 		return $this->table("table" . (!$table_class ? "" : " " . $table_class), $table_atributes, $table_title, $table_content, $table_tfooty);
 	}
 
-	public function bsDataTable(string|bool $table_class, string|bool $table_atributes, array $table_title, array $table_content, 
+	public function bsDataTable(string|bool $table_class, array|bool $table_atributes, array $table_title, array $table_content, 
 		array $table_methods, bool $table_tfoot = false): string {
 		return $this->dataTable("table w-100 " . $table_class, $table_atributes, $table_title, $table_content, $table_methods, $table_tfoot);
 	}
