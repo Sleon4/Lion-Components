@@ -5,7 +5,7 @@ class Components {
 	private $url_host;
 
 	/* 
-	Lion components 2.5
+	Lion components 2.6
 	*/
 	public function __construct($url_host) {
 		$this->url_host = $url_host;
