@@ -5,7 +5,7 @@ require_once("Components.php");
 class ComponentsBootstrap4 extends Components {
 	
 	/* 
-	Lion components 2.6
+	Lion components 2.5
 	*/
 	public function __construct(string $host) {
 		parent::__construct($host);
@@ -49,7 +49,7 @@ class ComponentsBootstrap4 extends Components {
 	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 	public function bsFeedback(string $valid, string $invalid): string {
-		return $this->div("valid-feedback", $valid) . $this->div("invalid-feedback", $valid);
+		return $this->div("valid-feedback", $valid) . $this->div("invalid-feedback", $invalid);
 	}
 
 	public function bsAlert(string $alert_class, string $alert_content, bool $alert_dissmissing = false): string {
