@@ -1,6 +1,11 @@
 <?php
 
-/* * * * author: Sergio León * * * */
+/* 
+	author: Sergio León
+	https://github.com/Sleon4
+	Lion components 2.7
+*/
+	
 class Components {
 
 	private $url_host;
@@ -15,10 +20,8 @@ class Components {
 	public string $required = " required";
 	public string $allowfullscreen = " allowfullscreen";
 	public string $checked = " checked";
+	public string $autofocus = " autofocus";
 
-	/* 
-	Lion framework - components 2.6
-	*/
 	public function __construct($url_host) {
 		$this->url_host = $url_host;
 	}
@@ -32,6 +35,18 @@ class Components {
 	/*
 	HTML atributes
 	*/
+	public function target(string $target): string {
+		return " target='" . ($target) . "'";
+	}
+
+	public function enctype(string $enctype): string {
+		return " enctype='" . ($enctype) . "'";
+	}
+
+	public function crossorigin(string $crossorigin): string {
+		return " crossorigin='" . ($crossorigin) . "'";
+	}
+
 	public function integrity(string $integrity): string {
 		return " integrity='" . ($integrity) . "'";
 	}
@@ -283,7 +298,7 @@ class Components {
 							$atributes.= $this->data($value['content'], $data->$value2());
 						}
 					} elseif ($value['type'] === "modal") {
-						$atributes.= $this->data("toggle", "modal") . $this->data("target", "#" . $value['value']);
+						$atributes.= $this->data("bs-toggle", "modal") . $this->data("bs-target", "#" . $value['value']);
 					}
 				}
 			}

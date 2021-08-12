@@ -1,15 +1,17 @@
 <?php
 
-/* * * * author: Sergio León * * * */
+/* 
+	author: Sergio León
+	https://github.com/Sleon4
+	Lion components 2.7
+*/
+
 require_once("Components.php");
 
 class ComponentsBootstrap5 extends Components {
 
 	public string $novalidate = " novalidate";
 	
-	/* 
-	Lion framework - components 2.6
-	*/
 	public function __construct(string $host) {
 		parent::__construct($host);
 	}
@@ -28,7 +30,7 @@ class ComponentsBootstrap5 extends Components {
 	}
 
 	public function bsSelect(string $select_name, string $select_id, ?string $select_class, string $select_content, ?string $select_atributes = null): string {
-		return $this->select($select_name, $select_id, "form-control " . $select_class, $select_content, $select_atributes);
+		return $this->select($select_name, $select_id, "form-select " . $select_class, $select_content, $select_atributes);
 	}
 
 	public function bsDataSelect(string $select_name, string $select_id, ?string $select_class, array $select_content, array $select_methods, ?string $select_atributes = null, string|int|null $select_comparate = null): string {
@@ -48,7 +50,7 @@ class ComponentsBootstrap5 extends Components {
 
 	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-	public function bsFeedback(string $valid, string $invalid): string {
+	public function bsFeedback(?string $valid, ?string $invalid): string {
 		return $this->div("valid-feedback", $valid) . $this->div("invalid-feedback", $invalid);
 	}
 
