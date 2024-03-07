@@ -1,0 +1,14 @@
+{
+    "name": "lion/components",
+    "description": "Create components with HTML tag functions",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Lion\\Components\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.2"
+    }
+}
